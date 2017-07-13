@@ -13,6 +13,14 @@ matchers =
         , map PlayersRoute (s "players")
         ]
 
+playersPath : String
+playersPath =
+    "#players"
+
+
+playerPath : PlayerId -> String
+playerPath id =
+    "#players/" ++ id
 
 parseLocation : Location -> Route
 parseLocation location =
