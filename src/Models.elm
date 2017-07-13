@@ -6,6 +6,8 @@ import RemoteData exposing (WebData)
 type alias Model =
     { players : WebData (List Player)
     , route : Route
+    , editing : Bool
+    , editNameText : String
     }
 
 
@@ -13,6 +15,8 @@ initialModel : Route -> Model
 initialModel route =
     { players = RemoteData.Loading
     , route = route
+    , editing = False
+    , editNameText = ""
     }
 
 type Route

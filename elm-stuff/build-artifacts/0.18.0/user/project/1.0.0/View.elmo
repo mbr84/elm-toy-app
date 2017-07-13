@@ -24,7 +24,7 @@ var _user$project$View$playerEditPage = F2(
 						_p0._0));
 				var _p1 = maybePlayer;
 				if (_p1.ctor === 'Just') {
-					return _user$project$Players_Edit$view(_p1._0);
+					return A2(_user$project$Players_Edit$view, _p1._0, model.editing);
 				} else {
 					return _user$project$View$notFoundView;
 				}

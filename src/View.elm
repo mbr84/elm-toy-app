@@ -45,7 +45,7 @@ playerEditPage model playerId =
             in
                 case maybePlayer of
                     Just player ->
-                        Players.Edit.view player
+                        Players.Edit.view player model.editing
 
                     Nothing ->
                         notFoundView

@@ -1,17 +1,17 @@
 module Players.Edit exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (class, value, href)
-import Html.Events exposing (onClick)
+import Html.Attributes exposing (class, value, href, placeholder, type_)
+import Html.Events exposing (onClick, onInput)
 import Msgs exposing (Msg)
 import Models exposing (Player)
 import Routing exposing (playersPath)
 
-view : Player -> Html Msg
-view model =
+view : Player -> Bool -> Html Msg
+view model editing =
     div []
         [ nav model
-        , form model
+        , form model editing
         ]
 
 
@@ -21,13 +21,19 @@ nav model =
          [ listBtn ]
 
 
-form : Player -> Html Msg
-form player =
+form : Player -> Bool -> Html Msg
+form player editing =
     div [ class "m3" ]
-        [ h1 [] [ text player.name ]
-        , formLevel player
-        ]
+        (formLevel player::playerName player editing |> List.foldl (::) [])
 
+playerName : Player -> Bool -> List (Html Msg)
+playerName player editing =
+    if editing then
+        [ button [ onClick (Msgs.ChangeName player) ] [text "Change Name"]
+        , input [ type_ "text", placeholder player.name, onInput Msgs.Name ] []
+        ]
+    else
+        [ h1 [ onClick Msgs.EditName ] [ text player.name ] ]
 
 formLevel : Player -> Html Msg
 formLevel player =

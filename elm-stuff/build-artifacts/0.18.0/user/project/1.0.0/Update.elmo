@@ -42,7 +42,7 @@ var _user$project$Update$update = F2(
 					_0: model,
 					_1: _user$project$Commands$savePlayerCmd(updatedPlayer)
 				};
-			default:
+			case 'OnPlayerSave':
 				if (_p0._0.ctor === 'Ok') {
 					return {
 						ctor: '_Tuple2',
@@ -52,5 +52,32 @@ var _user$project$Update$update = F2(
 				} else {
 					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 				}
+			case 'EditName':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{editing: true}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Name':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{editNameText: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			default:
+				var updatedPlayer = _elm_lang$core$Native_Utils.update(
+					_p0._0,
+					{name: model.editNameText});
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{editing: false}),
+					_1: _user$project$Commands$savePlayerCmd(updatedPlayer)
+				};
 		}
 	});

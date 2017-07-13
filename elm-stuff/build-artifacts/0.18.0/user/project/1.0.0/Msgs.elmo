@@ -1,3 +1,10 @@
+var _user$project$Msgs$ChangeName = function (a) {
+	return {ctor: 'ChangeName', _0: a};
+};
+var _user$project$Msgs$Name = function (a) {
+	return {ctor: 'Name', _0: a};
+};
+var _user$project$Msgs$EditName = {ctor: 'EditName'};
 var _user$project$Msgs$OnPlayerSave = function (a) {
 	return {ctor: 'OnPlayerSave', _0: a};
 };
